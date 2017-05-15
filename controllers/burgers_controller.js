@@ -15,16 +15,14 @@ router.get("/", function(req, res) {
 });
 
 router.post("/", function(req, res) {
-  burger.insert([res.body.name], function(){
+  burger.insert([req.body.burger_name], function(){
     res.redirect("/");
   });
 });
 
 router.put("/:id", function(req, res) {
 
-  burger.update({
-    devoured: req.body.devoured
-  }, req.params.id, function(){
+  burger.update(req.params.id, function(){
     res.redirect("/");
   });
 });

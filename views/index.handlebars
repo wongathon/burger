@@ -1,6 +1,6 @@
 <h1> It's BURGER TIME!</h1>
 
-<p> EAT DA BURGER! </p>
+<h2> EAT DA BURGER! </h2>
 
 <ul>
 	{{#each burgers}}
@@ -8,10 +8,11 @@
 		<li>
 			<p>{{this.id}} {{this.burger_name}}</p>
 			<form action="/{{this.id}}?_method=PUT" method="POST">
-				<input type="hidden" name="id" value="true">
+				<input type="hidden" name="devoured" value="true">
 				<button type="submit">EAT IT!</button>
 			</form>
 		</li>
+	{{/unless}}
 	{{/each}}
 </ul>
 
@@ -33,8 +34,8 @@
 <form class="create-form" action="/" method="POST">
 
 	<div class="form-group">
-		<label for="name">Burger Name:</label>
-		<input type="text" id="burger-name" name="name">
+		<label for="burger-name">Burger Name:</label>
+		<input type="text" id="burger-name" name="burger_name">
 	</div>
 
 	<button type="submit">Add Burger</button>

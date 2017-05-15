@@ -13,10 +13,8 @@ var orm = {
   insertOne: function(tableIn, col, value, cb) {
     var queryString = "INSERT INTO " + tableIn;
     queryString += " (";
-    queryString += col.toString();
-    queryString += "VALUES (";
-    queryString += value;
-    queryString += ") ";
+    queryString += col;
+    queryString += ") VALUES (?)";
 
     connection.query(queryString, value, function(err, result) {
       if (err) throw err;
@@ -24,10 +22,10 @@ var orm = {
     });
   },
 
-  updateOne: function(table, colVals, id, cb) {
+  updateOne: function(table, id, cb) {
     var queryString = "UPDATE " + table;
     queryString += " SET ";
-    queryString += colVals;
+    queryString += "devoured = true";
     queryString += " WHERE ";
     queryString += "id = " + id ;//????
 
